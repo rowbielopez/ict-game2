@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import HomePage from './HomePage';
+import CSUHomePage from './CSUHomePage';
 import ICTQuizGame from './lesson1_game';
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       {currentPage === 'home' ? (
-        <HomePage onStartLesson={handleStartLesson} />
+        <CSUHomePage onStartLesson={handleStartLesson} />
       ) : (
         <ICTQuizGame studentInfo={studentInfo} onBackToHome={handleBackToHome} />
       )}
