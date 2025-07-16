@@ -34,10 +34,10 @@ const HomePage = ({ onStartLesson }) => {
 
     // Validate form
     useEffect(() => {
-        const isValid = studentId.trim() && 
-                       studentName.trim() && 
-                       selectedCourse && 
-                       (selectedCourse === 'teaching-ict' || selectedLesson);
+        const isValid = studentId.trim() &&
+            studentName.trim() &&
+            selectedCourse &&
+            (selectedCourse === 'teaching-ict' || selectedLesson);
         setIsFormValid(isValid);
     }, [studentId, studentName, selectedCourse, selectedLesson]);
 
@@ -66,10 +66,10 @@ const HomePage = ({ onStartLesson }) => {
                 course: selectedCourse,
                 lesson: selectedLesson || null
             };
-            
+
             // Store in localStorage
             localStorage.setItem('csuStudentInfo', JSON.stringify(studentInfo));
-            
+
             // Pass to parent component
             onStartLesson(studentInfo);
         }
@@ -98,7 +98,7 @@ const HomePage = ({ onStartLesson }) => {
                     <form onSubmit={handleSubmit} className="login-form">
                         <div className="form-section">
                             <h3 className="form-title">Student Information</h3>
-                            
+
                             {/* Student ID Input */}
                             <div className="input-group">
                                 <label htmlFor="studentId" className="input-label">
@@ -184,8 +184,8 @@ const HomePage = ({ onStartLesson }) => {
                                     >
                                         <option value="">Choose a lesson...</option>
                                         {availableLessons.map(lesson => (
-                                            <option 
-                                                key={lesson.id} 
+                                            <option
+                                                key={lesson.id}
                                                 value={lesson.id}
                                                 disabled={!lesson.available}
                                             >
@@ -196,12 +196,12 @@ const HomePage = ({ onStartLesson }) => {
                                     <small id="lesson-help" className="input-help">
                                         Only Lesson 1 is currently available
                                     </small>
-                                    
+
                                     {/* Lesson Status Grid */}
                                     <div className="lesson-status-grid">
                                         {availableLessons.map(lesson => (
-                                            <div 
-                                                key={lesson.id} 
+                                            <div
+                                                key={lesson.id}
                                                 className={`lesson-status-item ${lesson.available ? 'available' : 'disabled'}`}
                                                 title={lesson.available ? 'Available' : 'Coming Soon'}
                                             >

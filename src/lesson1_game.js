@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CheckCircle, XCircle, Trophy, Users, Clock, ArrowRight, RotateCcw, ArrowLeft } from 'lucide-react';
+import { CheckCircle, XCircle, Trophy, Users, Clock, ArrowRight, RotateCcw, ArrowLeft, Play, User } from 'lucide-react';
 
 const ICTQuizGame = ({ studentInfo, onBackToHome }) => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -233,18 +233,22 @@ const ICTQuizGame = ({ studentInfo, onBackToHome }) => {
                 </div>
 
                 <div className="text-center mb-8">
-                    <h1 className="text-3xl font-bold text-gray-800 mb-2">ICT Knowledge Challenge</h1>
-                    <p className="text-gray-600">Test your understanding of ICT concepts!</p>
+                    <div className="university-logo">
+                        <Users size={48} />
+                    </div>
+                    <h1 className="quiz-title">ICT Knowledge Challenge</h1>
+                    <p className="quiz-subtitle">Test your understanding of ICT concepts!</p>
                 </div>
 
                 <div className="quiz-card">
-                    <h2 className="text-xl font-semibold mb-4 flex items-center">
+                    <h2 className="form-title">
                         <Users className="mr-2" size={20} />
                         Game Setup
                     </h2>
 
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <div className="input-group">
+                        <label className="input-label">
+                            <User size={18} />
                             Your Name or Team Name:
                         </label>
                         <input
@@ -256,8 +260,8 @@ const ICTQuizGame = ({ studentInfo, onBackToHome }) => {
                         />
                     </div>
 
-                    <div className="mb-6">
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Game Mode:</label>
+                    <div className="input-group">
+                        <label className="input-label">Game Mode:</label>
                         <div className="flex space-x-4">
                             <button
                                 onClick={() => setGameMode('individual')}
@@ -288,8 +292,9 @@ const ICTQuizGame = ({ studentInfo, onBackToHome }) => {
                     <button
                         onClick={startGame}
                         disabled={!playerName.trim()}
-                        className="quiz-button w-full disabled:bg-gray-300 disabled:cursor-not-allowed"
+                        className="quiz-button w-full start-lesson-btn"
                     >
+                        <Play size={20} />
                         Start Game!
                     </button>
                 </div>
@@ -303,10 +308,10 @@ const ICTQuizGame = ({ studentInfo, onBackToHome }) => {
             <div className="quiz-container">
                 <div className="text-center mb-8">
                     <div className="trophy-icon">
-                        <Trophy size={48} />
+                        <Trophy size={64} />
                     </div>
-                    <h1 className="text-3xl font-bold text-gray-800 mb-2">Game Complete!</h1>
-                    <h2 className="text-xl text-gray-600">Well done, {playerName}!</h2>
+                    <h1 className="quiz-title">Game Complete!</h1>
+                    <h2 className="quiz-subtitle">Well done, {playerName}!</h2>
                 </div>
 
                 <div className="quiz-card">
@@ -373,7 +378,14 @@ const ICTQuizGame = ({ studentInfo, onBackToHome }) => {
             {/* Header */}
             <div className="quiz-header">
                 <div className="flex items-center space-x-4">
-                    <div className="text-sm font-medium text-gray-600">
+                    <button
+                        onClick={onBackToHome}
+                        className="back-button"
+                    >
+                        <ArrowLeft size={16} />
+                        Home
+                    </button>
+                    <div className="text-sm font-medium">
                         Question {currentQuestion + 1} of {questions.length}
                     </div>
                     <div className={`category-tag category-${currentQ.category.toLowerCase()}`}>
@@ -381,21 +393,24 @@ const ICTQuizGame = ({ studentInfo, onBackToHome }) => {
                     </div>
                     <div className="flex items-center space-x-1">
                         <div className={`difficulty-dot difficulty-${currentQ.difficulty.toLowerCase()}`}></div>
-                        <span className="text-xs text-gray-600">{currentQ.difficulty}</span>
+                        <span className="text-xs">{currentQ.difficulty}</span>
                     </div>
                 </div>
                 <div className="text-right">
-                    <div className="text-sm text-gray-600">Score: {score}</div>
-                    <div className="text-sm text-gray-600">Player: {playerName}</div>
+                    <div className="text-sm font-weight-600">Score: {score}</div>
+                    <div className="text-sm">Player: {playerName}</div>
                 </div>
             </div>
 
             {/* Timer */}
             <div className="mb-6">
                 <div className="flex items-center justify-between mb-2">
-                    <Clock className="text-gray-500" size={16} />
+                    <div className="flex items-center gap-2">
+                        <Clock size={20} />
+                        <span className="font-weight-600">Time Remaining</span>
+                    </div>
                     <span className={`timer-display ${timeLeft <= 10 ? 'warning' : ''}`}>
-                        {timeLeft}s remaining
+                        {timeLeft}s
                     </span>
                 </div>
                 <div className="timer-bar">
@@ -408,7 +423,7 @@ const ICTQuizGame = ({ studentInfo, onBackToHome }) => {
 
             {/* Question */}
             <div className="quiz-card">
-                <h2 className="text-xl font-semibold text-gray-800 mb-6">
+                <h2 className="text-xl font-semibold mb-6" style={{ color: '#800000' }}>
                     {currentQ.question}
                 </h2>
 
@@ -471,9 +486,9 @@ const ICTQuizGame = ({ studentInfo, onBackToHome }) => {
 
             {/* Progress Bar */}
             <div className="mt-6">
-                <div className="flex justify-between text-sm text-gray-600 mb-2">
-                    <span>Progress</span>
-                    <span>{Math.round(((currentQuestion + 1) / questions.length) * 100)}%</span>
+                <div className="flex justify-between text-sm mb-2" style={{ color: '#800000' }}>
+                    <span className="font-weight-600">Progress</span>
+                    <span className="font-weight-600">{Math.round(((currentQuestion + 1) / questions.length) * 100)}%</span>
                 </div>
                 <div className="progress-bar">
                     <div
