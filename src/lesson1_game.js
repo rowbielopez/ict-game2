@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { CheckCircle, XCircle, Trophy, Users, Clock, ArrowRight, RotateCcw } from 'lucide-react';
+import { CheckCircle, XCircle, Trophy, Users, Clock, ArrowRight, RotateCcw, ArrowLeft } from 'lucide-react';
 
-const ICTQuizGame = () => {
+const ICTQuizGame = ({ studentInfo, onBackToHome }) => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -9,7 +9,7 @@ const ICTQuizGame = () => {
     const [gameFinished, setGameFinished] = useState(false);
     const [timeLeft, setTimeLeft] = useState(30);
     const [gameMode, setGameMode] = useState('individual'); // 'individual' or 'team'
-    const [playerName, setPlayerName] = useState('');
+    const [playerName, setPlayerName] = useState(studentInfo?.studentName || '');
     const [gameStarted, setGameStarted] = useState(false);
 
     const questions = [
@@ -157,6 +157,13 @@ const ICTQuizGame = () => {
         }
     };
 
+    // Update player name when studentInfo changes
+    useEffect(() => {
+        if (studentInfo?.studentName) {
+            setPlayerName(studentInfo.studentName);
+        }
+    }, [studentInfo]);
+
     // Timer effect
     useEffect(() => {
         const handleTimeout = () => {
@@ -205,6 +212,26 @@ const ICTQuizGame = () => {
     if (!gameStarted) {
         return (
             <div className="quiz-container">
+                <div className="quiz-header">
+                    <button
+                        onClick={onBackToHome}
+                        className="back-button"
+                    >
+                        <ArrowLeft size={20} />
+                        Back to Home
+                    </button>
+
+                    {studentInfo && (
+                        <div className="student-info-header">
+                            <div className="student-details">
+                                <span><strong>ID:</strong> {studentInfo.studentId}</span>
+                                <span><strong>Name:</strong> {studentInfo.studentName}</span>
+                                <span><strong>Course:</strong> {studentInfo.course}</span>
+                            </div>
+                        </div>
+                    )}
+                </div>
+
                 <div className="text-center mb-8">
                     <h1 className="text-3xl font-bold text-gray-800 mb-2">ICT Knowledge Challenge</h1>
                     <p className="text-gray-600">Test your understanding of ICT concepts!</p>
@@ -250,11 +277,11 @@ const ICTQuizGame = () => {
                     <div className="bg-blue-50 p-4 rounded-lg mb-4">
                         <h3 className="font-semibold text-blue-800 mb-2">Game Rules:</h3>
                         <ul className="text-sm text-blue-700 space-y-1">
-                            <li>• {questions.length} questions covering ICT topics</li>
-                            <li>• 30 seconds per question</li>
-                            <li>• Multiple choice format</li>
-                            <li>• Instant feedback on answers</li>
-                            <li>• Final score and performance analysis</li>
+                            <li>{questions.length} questions covering ICT topics</li>
+                            <li>30 seconds per question</li>
+                            <li>Multiple choice format</li>
+                            <li>Instant feedback on answers</li>
+                            <li>Final score and performance analysis</li>
                         </ul>
                     </div>
 

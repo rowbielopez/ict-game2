@@ -725,3 +725,310 @@ code {
 .disabled\:cursor-not-allowed:disabled {
   cursor: not-allowed;
 }
+
+/* HomePage Styles */
+.home-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #800000 0%, #600000 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.home-content {
+  max-width: 800px;
+  width: 100%;
+}
+
+.home-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.home-icon {
+  color: #ffd700;
+  margin-bottom: 16px;
+}
+
+.home-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: white;
+}
+
+.home-subtitle {
+  font-size: 1.25rem;
+  color: #f5f5f5;
+  opacity: 0.9;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #ffd700;
+  text-align: center;
+}
+
+/* Course Selection */
+.course-selection {
+  margin-bottom: 32px;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.course-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.course-card:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: #ffd700;
+  transform: translateY(-2px);
+}
+
+.course-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Student Info Form */
+.student-info-form {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 32px;
+  backdrop-filter: blur(10px);
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #ffd700;
+}
+
+.form-icon {
+  color: #ffd700;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #ffd700;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  margin-top: 32px;
+}
+
+.btn-primary {
+  background: #ffd700;
+  color: #800000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #ffed4a;
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  background: rgba(255, 215, 0, 0.5);
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Student Info Display */
+.student-info-display {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 32px;
+}
+
+.info-item {
+  color: white;
+  margin-bottom: 8px;
+}
+
+.info-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Lesson Selection */
+.lesson-selection {
+  margin-bottom: 32px;
+}
+
+.lesson-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.lesson-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.lesson-card:hover:not(.disabled) {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: #ffd700;
+  transform: translateY(-2px);
+}
+
+.lesson-card.disabled {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.lesson-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.coming-soon {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+}
+
+/* Quiz Game Updates */
+.back-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: #800000;
+  border: 2px solid #800000;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-button:hover {
+  background: #800000;
+  color: white;
+}
+
+.student-info-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.student-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.875rem;
+  color: #800000;
+}
+
+.student-details span {
+  text-align: right;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 2rem;
+  }
+
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .student-details {
+    align-items: center;
+    text-align: center;
+  }
+}
