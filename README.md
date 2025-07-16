@@ -1,6 +1,56 @@
-# Getting Started with Create React App
+# ICT Knowledge Challenge Quiz Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive educational quiz game built with React to test knowledge of Information and Communication Technology (ICT) concepts.
+
+## Features
+
+- **Interactive Quiz Interface**: Multiple choice questions with a 30-second timer per question
+- **Educational Content**: 10 comprehensive questions covering:
+  - ICT definitions and core concepts
+  - Hardware and software components
+  - Educational technology applications
+  - Digital economy and livelihood opportunities
+  - Social impact and digital divide
+- **Game Modes**: Individual or team play options
+- **Visual Feedback**: Color-coded correct/incorrect answers with instant feedback
+- **Progress Tracking**: Real-time score tracking and progress visualization
+- **Performance Analysis**: Category-based performance breakdown at the end
+- **Responsive Design**: Clean, modern UI with custom CSS styling
+- **Game Flow**: Setup → Questions → Results with play again functionality
+
+## Technologies Used
+
+- React 19.1.0
+- Lucide React (for icons)
+- Custom CSS (styled to look like Tailwind CSS)
+- JavaScript ES6+
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (version 14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd educgame
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm start
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Available Scripts
 
